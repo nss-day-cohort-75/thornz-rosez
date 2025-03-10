@@ -1,0 +1,49 @@
+Table Flowers {
+  id int pk
+  color varchar
+  species varchar
+}
+
+Table Nurseries {
+  id int
+  Name varchar
+}
+
+Table Distributors{
+  id int
+  Name varchar
+  markup percentage
+}
+
+Table Retailers{
+  id int
+  name varchar
+  address varchar
+  distributorId int
+}
+
+Table Nursery_Flowers{
+  id int
+  flowerId int
+  nurseryId int
+
+}
+
+Table Nursery_Distributors{
+  id int
+  nurseryId int
+  distributorId int
+}
+
+
+Ref: "Flowers"."id" < "Nursery_Flowers"."flowerId"
+
+Ref: "Nurseries"."id" < "Nursery_Flowers"."nurseryId"
+
+Ref: "Distributors"."id" < "Nursery_Distributors"."distributorId"
+
+Ref: "Nurseries"."id" < "Nursery_Distributors"."nurseryId"
+
+
+
+Ref: "Distributors"."id" < "Retailers"."distributorId"
