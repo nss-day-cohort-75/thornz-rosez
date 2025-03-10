@@ -4,6 +4,7 @@ Table Flowers {
   id int pk
   color varchar
   species varchar
+ 
 }
 
 Table Nurseries {
@@ -22,12 +23,14 @@ Table Retailers{
   name varchar
   address varchar
   distributorId int
+  markup percentage
 }
 
 Table Nursery_Flowers{
   id int pk
   flowerId int
   nurseryId int
+  price decimal
 
 }
 
@@ -72,5 +75,3 @@ Ref: "Customer"."id" < "Cart"."customerId"
 
 
 Ref: "Retailers"."id" < "Cart"."retailerId"
-
-Ref: "Flowers"."id" < "Cart"."flowerId"
