@@ -23,3 +23,66 @@
     font-size: 18px;
     
 }
+
+.detail-container {
+    margin: 8rem auto;   
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 70%;
+    height: fit-content;
+    background-color: grey;
+}
+
+.detail-retail-container{
+    display: flex;
+    flex-direction: column;
+}
+.retail-middle-names {
+    display: flex;
+    justify-content: space-around;
+}
+.retail-detail-header {
+    display: flex;
+    justify-content: space-around;
+    color: blanchedalmond;
+    width: 100%;
+}
+
+.retail-details-nursery {
+    margin: 20px;
+    padding: 5px;
+    color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+}
+.detail-flower-container {
+    padding: 5px;
+    color: blanchedalmond;
+    display: flex;
+}
+.retail-detail-flower-container {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+.flower-container {
+    width: 100%;
+    background-color: gray;
+    margin: 20px;    
+    border: 3px solid silver;
+}
+.flower-item {
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    background-color: darkgoldenrod;
+    color: aliceblue;
+}
