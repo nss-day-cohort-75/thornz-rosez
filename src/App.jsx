@@ -5,6 +5,7 @@ import { ApplicationViews } from "./views/ApplicationViews"
 import { Login } from "./components/Auth/login"
 import { Register } from "./components/auth/Register"
 
+
 export const App = () => {
   return (
     <Routes>
