@@ -16,7 +16,7 @@ export const Register = (props) => {
     createUser(user).then((createdUser) => {
       if (createdUser.hasOwnProperty("id")) {
         localStorage.setItem(
-          "learning_user",
+          "customer",
           JSON.stringify({
             id: createdUser.id,
             staff: createdUser.isStaff,

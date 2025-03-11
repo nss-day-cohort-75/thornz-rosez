@@ -10,9 +10,9 @@ export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
 
     useEffect(() => {
-      const localLearningUser = localStorage.getItem("learning_user")
-      const learningUserObject = JSON.parse(localLearningUser)
-      setCurrentUser(learningUserObject)
+      const localCustomer = localStorage.getItem("customer")
+      const customerObject = JSON.parse(localCustomer)
+      setCurrentUser(customerObject)
     }, [])
 
     return <>

@@ -17,7 +17,7 @@ export const Login = () => {
         const user = foundUsers[0]
         if (password === user.password) {
           localStorage.setItem(
-            "learning_user",
+            "customer",
             JSON.stringify({
               id: user.id,
             })
@@ -25,8 +25,10 @@ export const Login = () => {
 
           navigate("/")
         } else {
-          window.alert("Invalid login")
+          window.alert("Incorrect password")
         }
+      } else {
+        window.alert("Invalid login")
       }
     })
   }
