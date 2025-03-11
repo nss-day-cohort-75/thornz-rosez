@@ -8,7 +8,7 @@ export const NavBar = () => {
             <Link to="/nursery"><li>Nurseries</li></Link>
             <Link to="/distributor"><li>Distributors</li></Link>
             <Link to="/retailer"><li>Retailers</li></Link>
-            <Link to="/mycart"><li>My Cart</li></Link>
+            <Link to="/my-cart"><li>My Cart</li></Link>
             {localStorage.getItem("customer") ? (
         
             <Link

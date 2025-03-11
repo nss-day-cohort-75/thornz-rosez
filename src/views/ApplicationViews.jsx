@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { NurseriesList } from "../components/nurseries/NurseriesList"
 import { DistributorsList } from "../components/distributors/DistributorsList"
 import { RetailersList } from "../components/retailers/RetailersList"
+import { ShoppingCart } from "../components/shoppingCart/ShoppingCart"
 
 
 export const ApplicationViews = () => {
@@ -29,7 +30,7 @@ export const ApplicationViews = () => {
                     {/* <Route path="distributor:Id" element={<DistributorsDetails/>} /> */}
                     <Route path="retailer" element={<RetailersList/>} />
                     {/* <Route path="retailer:Id" element={<RetailersDetails/>} /> */}
-                    {/* <Route path="cart" element={<ShoppingCart />} /> */}
+                    <Route path="my-cart" element={<ShoppingCart currentUser={currentUser}/>} />
             </Route>
         </Routes>
     </>
