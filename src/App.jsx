@@ -1,19 +1,23 @@
+import React from "react"
 import { Route, Routes } from "react-router-dom"
 import { Authorized } from "./views/Authorized"
-import { Login } from "./components/auth/Login"
-import { Register } from "./components/auth/Register"
+import { ApplicationViews } from "./views/ApplicationViews"
+import { Login } from "./components/Auth/login"
+import { Register } from "./components/Auth/Register"
 
-function App() {
-
+export const App = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/register" element={<Register/>}/>
-      <Route path="*" element={
-        <Authorized/>
-      }/>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route
+        path="*"
+        element={
+          <Authorized>
+            <ApplicationViews/>
+          </Authorized>
+        }
+      />
     </Routes>
   )
 }
-
-export default App
