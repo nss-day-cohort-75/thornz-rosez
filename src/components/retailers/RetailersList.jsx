@@ -18,7 +18,7 @@ export const RetailersList = () => {
             <div className="retailers" >
             {retailers.map(retailer=>{
                 return(
-                    <Link to={`/retailer/${retailer.id}`}><div key={retailer.id} >{retailer.name}</div></Link>
+                    <Link to={`/retailer/${retailer.id}`} key={retailer.id}><div>{retailer.name}</div></Link>
                     )
                 })}
                 </div>
