@@ -9,3 +9,12 @@ export const getDistributorById = (id) => {
 export const getNurseryFlowersByIds = (flowerId, nurseryId) => {
     return fetch(`http://localhost:8088/nursery-flowers?flowerId=${flowerId}&nurseryId=${nurseryId}`).then((res) => res.json())
 }
+export const PostShoppingCart = (cart) => {
+    return fetch('http://localhost:8088/cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cart),
+    })
+}
