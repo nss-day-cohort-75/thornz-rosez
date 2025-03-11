@@ -1,0 +1,55 @@
+.auth-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-size: 2rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-form-input {
+  padding: 0.25rem;
+  width: 60vw;
+  height: 25px;
+}
+
+.register-link {
+  text-align: center;
+  margin-right: 40%;
+}
+
+.auth-fieldset {
+  display: flex;
+  flex-direction: row;
+}
+
+.login-fieldsets {
+  border: none;
+  padding: 0;
+  margin: 2vh 0;
+  min-width: 0;
+}
+
+.member-sign-in {
+  width: 60vw;
+}
+
+.auth-btn {
+  width: 100px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: white;
+}
