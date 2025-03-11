@@ -17,9 +17,19 @@ export const ShoppingCart = ({ currentUser }) => {
         <div className="shopping-cart-container">
             <div className="shopping-cart-card">
                 <h2>Shopping Cart</h2>
+                <div className="h3s">
+                    <h3>Flowers</h3>
+                    <h3>Amount</h3>
+                    <h3>Price</h3>
+                </div>
                 <div className="shopping-cart">
+                    <div className="top-row">
+                        <div>Flowers</div>
+                        <div className="quantity">Quantity</div>
+                        <div>Price</div>
+                    </div>
                     {receipts.map(receipt => {
-                        return <Receipts receipt={receipt} key={receipt.id}/>
+                        return <Receipts receipt={receipt} key={receipt.id} />
                     })}
                 </div>
             </div>

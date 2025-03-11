@@ -24,12 +24,18 @@ export const Receipts = ({ receipt }) => {
         }
     }, [distributor])
 
-    useEffect(()=>{
-        setFlowerPrice(nursery.price * (1 + distributor.markup + receipt.retailer.markup))
-    },[distributor])
+    useEffect(() => {
+        if (nursery.price > 0) {
+            setFlowerPrice((nursery.price * (1 + distributor.markup + receipt.retailer.markup)).toFixed(2))
+        }
+    }, [nursery])
 
 
     return (
-        <div>{flowerPrice}</div>
+        <div className="row">
+            <div>{receipt.flower.color} {receipt.flower.species}</div>
+            <div className="quantity">1</div>
+            <div>${flowerPrice}</div>
+        </div>
     )
 }
