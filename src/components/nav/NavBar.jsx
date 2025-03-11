@@ -9,13 +9,13 @@ export const NavBar = () => {
             <Link to="/distributor"><li>Distributors</li></Link>
             <Link to="/retailer"><li>Retailers</li></Link>
             <Link to="/mycart"><li>My Cart</li></Link>
-            {localStorage.getItem("learning_user") ? (
+            {localStorage.getItem("customer") ? (
         
             <Link
             
             to=""
             onClick={() => {
-                localStorage.removeItem("learning_user")
+                localStorage.removeItem("customer")
                 navigate("/login", { replace: true })
             }}
             ><li>Logout</li>
