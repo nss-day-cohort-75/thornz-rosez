@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAllDistributors } from "../../services/DistributorsServices.js"
 import "./Distributors.css"
+import { Link } from "react-router-dom"
 
 export const DistributorsList = () => {
 
@@ -18,7 +19,7 @@ export const DistributorsList = () => {
         <div className="distributors" >
         {distributors.map(distributor=>{
             return(
-                    <div key={distributor.id} >{distributor.name}</div>
+                    <Link to={`/distributor/${distributor.id}`}><div key={distributor.id} >{distributor.name}</div></Link>
                 )
             })}
             </div>

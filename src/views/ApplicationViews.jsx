@@ -3,7 +3,8 @@ import { Outlet, Route, Routes } from "react-router-dom"
 import { NavBar } from "../components/nav/Navbar"
 import { useState, useEffect } from "react"
 import { NurseriesList } from "../components/nurseries/NurseriesList"
-
+import { DistributorsList } from "../components/distributors/DistributorsList"
+import { RetailersList } from "../components/retailers/RetailersList"
 
 
 export const ApplicationViews = () => {
@@ -21,12 +22,14 @@ export const ApplicationViews = () => {
                 <>
                     <NavBar currentUser={currentUser}/>
                     <Outlet />
-                </>
-                    }
-                >
-                    <Route path="nursery" element={<NurseriesList    />} />
-
-
+                </>}>
+                    <Route path="nursery" element={<NurseriesList/>} />
+                    {/* <Route path="nursery:Id" element={<NurseriesDetails/>} /> */}
+                    <Route path="distributor" element={<DistributorsList/>} />
+                    {/* <Route path="distributor:Id" element={<DistributorsDetails/>} /> */}
+                    <Route path="retailer" element={<RetailersList/>} />
+                    {/* <Route path="retailer:Id" element={<RetailersDetails/>} /> */}
+                    {/* <Route path="cart" element={<ShoppingCart />} /> */}
             </Route>
         </Routes>
     </>

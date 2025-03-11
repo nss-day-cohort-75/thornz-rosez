@@ -4,3 +4,9 @@ html {
     padding: 0 15px 15px 0;
     margin-top: -15px;
 }
+a {
+    font-size: larger;
+    color: blanchedalmond;
+    text-decoration: none;
+    list-style: none;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAllRetailers } from "../../services/RetailersServices.js"
 import "./Retailers.css"
+import { Link } from "react-router-dom"
 
 export const RetailersList = () => {
     const [retailers, setRetailers] = useState([])
@@ -17,7 +18,7 @@ export const RetailersList = () => {
             <div className="retailers" >
             {retailers.map(retailer=>{
                 return(
-                        <div key={retailer.id} >{retailer.name}</div>
+                    <Link to={`/retailer/${retailer.id}`}><div key={retailer.id} >{retailer.name}</div></Link>
                     )
                 })}
                 </div>
