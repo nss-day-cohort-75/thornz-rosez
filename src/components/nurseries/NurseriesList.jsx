@@ -17,12 +17,12 @@ useEffect(() => {
 return (
     <div className="nurseries-container">
     <h2>Nurseries</h2>
-    <article className="nurseries" key={allNurseries}>
+    <article className="nurseries" >
         {allNurseries.map(nurseriesObject => {
             return (
-                // <Link to={`/nurseries/${nurseriesObject.id}`}>
+                <Link key={nurseriesObject.id} to={`/nurseries/${nurseriesObject.id}`}>
                 <div>{nurseriesObject.name}</div>
-                //* </Link> */
+                </Link> 
             )
         })}
     </article>

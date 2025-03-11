@@ -2,8 +2,7 @@ import React from "react"
 import { Outlet, Route, Routes } from "react-router-dom"
 import { NavBar } from "../components/nav/Navbar"
 import { useState, useEffect } from "react"
-// import { Nurserylist } from "../components/nurseries/NurseriesList"
-// import {  } from "../components/nurseries/NurseriesList"
+import { NurseriesList } from "../components/nurseries/NurseriesList"
 
 
 
@@ -25,7 +24,7 @@ export const ApplicationViews = () => {
                 </>
                     }
                 >
-                    <Route path="nursery" element={<NurseryList />} />
+                    <Route path="nursery" element={<NurseriesList    />} />
 
 
             </Route>
