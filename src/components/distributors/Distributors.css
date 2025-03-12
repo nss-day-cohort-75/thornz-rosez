@@ -23,4 +23,56 @@
     font-size: 18px;
     
 }
+.detail-container {
+    margin: 8rem auto;   
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 70%;
+    height: fit-content;
+    background-color: grey;
+}
 
+.detail-distributor-container{
+    display: flex;
+    flex-direction: column;
+}
+.distributor-middle-names {
+    display: flex;
+    justify-content: space-around;
+}
+.distributor-detail-header {
+    display: flex;
+    justify-content: space-around;
+    color: blanchedalmond;
+    width: 100%;
+}
+
+.distributor-details-retail {
+    margin: 20px;
+    padding: 5px;
+    color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+}
+.detail-flower-container {
+    padding: 5px;
+    color: blanchedalmond;
+    display: flex;
+}
+.distributor-detail-flower-container {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+.flower-container {
+    width: 100%;
+    background-color: gray;
+    margin: 20px;    
+    border: 3px solid silver;
+}
+.flower-item {
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+}
