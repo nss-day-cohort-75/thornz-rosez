@@ -34,14 +34,16 @@ export const RetailerDetails = ({currentUser}) => {
         })
     }, [retailerId])
 
-    const ShoppingCart = (flowerIds) => {
+    const ShoppingCart = (flowerIds, flowerName) => {
         const cartItems = {
             customerId: currentUser.id,
             flowerId: parseInt(flowerIds),
             retailerId: parseInt(retailerId)
         }
-        PostShoppingCart(cartItems)
 
+        PostShoppingCart(cartItems)
+        .then(() => alert(`Purchased 1 ${flowerName}`))
+        .catch(err => console.error("Failed to add to cart:", err));
         forceRerender(prev => prev + 1);
     }
 
@@ -62,8 +64,7 @@ export const RetailerDetails = ({currentUser}) => {
                         {nurseryDistributors.map(data => {return <p>{data.nursery.name}</p>})}
                     </section>
                 </div>
-                 
-                </div>
+            </div>
                 
                 <div className="detail-flower-container">
                 <section className="retail-detail-flower-container">
@@ -72,14 +73,13 @@ export const RetailerDetails = ({currentUser}) => {
                             <div className="flower-container">
                                 <p className="flower-item">{flower.flower.color}</p>
                                 <p className="flower-item">{flower.flower.species}</p>
-                                <p className="flower-item">{flower.price}</p>
+                                <p className="flower-item">${flower.price}</p>
                                 <button onClick={(event) => {
-                                    ShoppingCart(event.target.value)
-                                }} value={flower.flowerId} >Purchase</button>                            
+                                    ShoppingCart(event.target.value, event.target.id)
+                                }} value={flower.flowerId} id={`${flower.flower.species}`} >Purchase</button>                            
                             </div>)})}
                 </section>
             </div>
         </div>
     )
-
 }

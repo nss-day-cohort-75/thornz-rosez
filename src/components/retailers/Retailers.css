@@ -75,7 +75,9 @@
 .flower-item {
     display: flex;
     flex-direction: column;
-    padding: 3px;
+    height: 19%;
+    margin: 1px;
+    padding: 4px;
 }
 
 button {
