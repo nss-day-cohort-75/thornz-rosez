@@ -14,6 +14,7 @@ import { NurseriesDetails } from "../components/nurseries/NurseriesDetails.jsx"
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
+    const [cartNum, setCartNum] = useState(0)
 
     useEffect(() => {
         const localCustomer = localStorage.getItem("customer")
@@ -25,7 +26,7 @@ export const ApplicationViews = () => {
         <Routes>
             <Route path="/" element={
                 <>
-                    <NavBar currentUser={currentUser} />
+                    <NavBar cartNum={cartNum} />
                     <Outlet />
                 </>}>
                 <Route index element={<RetailersList />} />
@@ -34,7 +35,7 @@ export const ApplicationViews = () => {
                 <Route path="distributor" element={<DistributorsList />} />
                 <Route path="distributor/:distributorId" element={<DistributorsDetails />} />
                 <Route path="retailer" element={<RetailersList />} />
-                <Route path="/retailer/:retailerId" element={<RetailerDetails currentUser={currentUser} />} />
+                <Route path="/retailer/:retailerId" element={<RetailerDetails currentUser={currentUser} setCartNum={setCartNum}/>} />
                 <Route path="my-cart" element={<ShoppingCart currentUser={currentUser} />} />
             </Route>
         </Routes>
