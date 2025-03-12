@@ -10,7 +10,6 @@ export const RetailerDetails = ({currentUser}) => {
     const [nurseryDistributors, setNurseryDistributors] = useState([])
     const [nurseryFlowers, setNurseryFlowers] = useState([])
     const [retailer, setRetailer] = useState({})
-    const [, forceRerender] = useState(0);
 
     useEffect(() => {
         getAllDistributorNurseries(retailer.distributorId).then(data => {
@@ -42,9 +41,8 @@ export const RetailerDetails = ({currentUser}) => {
         }
 
         PostShoppingCart(cartItems)
-        .then(() => alert(`Purchased 1 ${flowerName}`))
-        .catch(err => console.error("Failed to add to cart:", err));
-        forceRerender(prev => prev + 1);
+
+        window.location.reload()
     }
 
     return (
