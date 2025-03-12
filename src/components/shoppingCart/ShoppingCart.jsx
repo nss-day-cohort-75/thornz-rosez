@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react"
 import "./ShoppingCart.css"
 import { getCartByCustomerId } from "../../services/ShoppingCartServices"
-import { Receipts } from "./Receipts"
+import { Receipt } from "./Receipt"
 
 export const ShoppingCart = ({ currentUser }) => {
     const [receipts, setReceipts] = useState([])
+    const [flowers, setFlowers] = useState([])
 
     useEffect(() => {
         getCartByCustomerId(currentUser.id).then((res) => {
             setReceipts(res)
         })
-
     }, [currentUser])
+
+    useEffect(()=>{
+        setFlowers([...new Map(receipts.map(item => [item.flowerId, item])).values()])
+    }, [receipts])
 
     return (
         <div className="shopping-cart-container">
@@ -28,8 +32,8 @@ export const ShoppingCart = ({ currentUser }) => {
                         <div className="quantity">Quantity</div>
                         <div>Price</div>
                     </div>
-                    {receipts.map(receipt => {
-                        return <Receipts receipt={receipt} key={receipt.id} />
+                    {flowers.map(receipt => {
+                        return <Receipt receipt={receipt} key={receipt.id} />
                     })}
                 </div>
             </div>

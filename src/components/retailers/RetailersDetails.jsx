@@ -36,8 +36,8 @@ export const RetailerDetails = ({currentUser}) => {
     const ShoppingCart = (flowerIds) => {
         const cartItems = {
             customerId: currentUser.id,
-            flowerId: flowerIds,
-            retailerId: retailerId
+            flowerId: parseInt(flowerIds),
+            retailerId: parseInt(retailerId)
         }
         PostShoppingCart(cartItems)
     }

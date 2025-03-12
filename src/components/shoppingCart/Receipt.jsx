@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react"
-import { getDistributorById, getNurseryFlowersByIds } from "../../services/ShoppingCartServices"
+import { getDistributorById, getFlowerNumByIds, getNurseryFlowersByIds } from "../../services/ShoppingCartServices"
 
-export const Receipts = ({ receipt }) => {
+export const Receipt = ({ receipt }) => {
     const [distributor, setDistributor] = useState({})
     const [nursery, setNursery] = useState({})
-    const [flowerPrice, setFlowerPrice] = useState(0)
+    const [flowerPrice, setFlowerPrice] = useState('No Price Found')
+    const [amount, setAmount] = useState(1)
 
     useEffect(() => {
         getDistributorById(receipt?.retailer?.distributorId).then((res) => {
             setDistributor(res)
+        })
+
+        getFlowerNumByIds(receipt.customerId, receipt.flowerId).then((res) => {
+            setAmount(res.length)
         })
     }, [receipt])
 
@@ -34,8 +39,8 @@ export const Receipts = ({ receipt }) => {
     return (
         <div className="row">
             <div>{receipt.flower.color} {receipt.flower.species}</div>
-            <div className="quantity">1</div>
-            <div>${flowerPrice}</div>
+            <div className="quantity">{amount}</div>
+            <div>${(flowerPrice * amount).toFixed(2)}</div>
         </div>
     )
 }
