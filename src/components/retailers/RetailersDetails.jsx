@@ -10,6 +10,7 @@ export const RetailerDetails = ({currentUser}) => {
     const [nurseryDistributors, setNurseryDistributors] = useState([])
     const [nurseryFlowers, setNurseryFlowers] = useState([])
     const [retailer, setRetailer] = useState({})
+    const [, forceRerender] = useState(0);
 
     useEffect(() => {
         getAllDistributorNurseries(retailer.distributorId).then(data => {
@@ -40,6 +41,8 @@ export const RetailerDetails = ({currentUser}) => {
             retailerId: parseInt(retailerId)
         }
         PostShoppingCart(cartItems)
+
+        forceRerender(prev => prev + 1);
     }
 
     return (
