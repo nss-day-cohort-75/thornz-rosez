@@ -20,7 +20,7 @@ return (
     <article className="nurseries" >
         {allNurseries.map(nurseriesObject => {
             return (
-                <Link key={nurseriesObject.id} to={`/nurseries/${nurseriesObject.id}`}>
+                <Link key={nurseriesObject.id} to={`/nursery/${nurseriesObject.id}`}>
                 <div>{nurseriesObject.name}</div>
                 </Link> 
             )

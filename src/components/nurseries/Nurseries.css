@@ -23,3 +23,36 @@
     
 }
 
+.distributor-container{
+    margin: 8rem auto;   
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 70%;
+    height: fit-content;
+    background-color: grey;
+}
+
+.detail-distributor-container{
+    display: flex;
+    flex-direction: column;
+}
+.distributor-middle-names {
+    display: flex;
+    justify-content: space-around;
+}
+.Title {
+    color: blanchedalmond;
+    text-align: center;
+}
+
+.distributors {
+    font-size: 53px;
+    color: blanchedalmond
+}
+.distributor-details-retail {
+    
+    color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+}
