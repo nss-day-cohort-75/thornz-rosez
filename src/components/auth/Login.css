@@ -29,6 +29,10 @@
 .register-link {
   text-align: center;
   margin-right: 40%;
+  a {
+    color: blue;
+    text-decoration: underline;
+  }
 }
 
 .auth-fieldset {
@@ -52,4 +56,6 @@
   height: 50px;
   border-radius: 25px;
   background-color: white;
+  border: 1px solid black;
+  color: black;
 }

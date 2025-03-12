@@ -14,27 +14,29 @@ import { NurseriesDetails } from "../components/nurseries/NurseriesDetails.jsx"
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
+    const [cartNum, setCartNum] = useState(0)
 
     useEffect(() => {
-      const localCustomer = localStorage.getItem("customer")
-      const customerObject = JSON.parse(localCustomer)
-      setCurrentUser(customerObject)
+        const localCustomer = localStorage.getItem("customer")
+        const customerObject = JSON.parse(localCustomer)
+        setCurrentUser(customerObject)
     }, [])
 
     return <>
         <Routes>
-        <Route path="/" element={
+            <Route path="/" element={
                 <>
-                    <NavBar currentUser={currentUser}/>
+                    <NavBar cartNum={cartNum} />
                     <Outlet />
                 </>}>
-                    <Route path="nursery" element={<NurseriesList/>} />
-                    <Route path="nursery/:nurseryId" element={<NurseriesDetails/>} />
-                    <Route path="distributor" element={<DistributorsList/>} />
-                    <Route path="distributor/:distributorId" element={<DistributorsDetails/>} />
-                    <Route path="retailer" element={<RetailersList/>} />
-                    <Route path="/retailer/:retailerId" element={<RetailerDetails currentUser={currentUser}/>} />
-                    <Route path="my-cart" element={<ShoppingCart currentUser={currentUser} />} />
+                <Route index element={<RetailersList />} />
+                <Route path="nursery" element={<NurseriesList />} />
+                <Route path="nursery/:nurseryId" element={<NurseriesDetails />} />
+                <Route path="distributor" element={<DistributorsList />} />
+                <Route path="distributor/:distributorId" element={<DistributorsDetails />} />
+                <Route path="retailer" element={<RetailersList />} />
+                <Route path="/retailer/:retailerId" element={<RetailerDetails currentUser={currentUser} setCartNum={setCartNum}/>} />
+                <Route path="my-cart" element={<ShoppingCart currentUser={currentUser} />} />
             </Route>
         </Routes>
     </>

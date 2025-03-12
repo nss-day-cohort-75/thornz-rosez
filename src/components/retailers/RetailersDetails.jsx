@@ -3,47 +3,52 @@ import { useParams } from "react-router-dom"
 import { getretailerDetails } from "../../services/RetailersServices"
 import { getAllDistributorNurseries } from "../../services/DistributorsServices"
 import { getFlowerNursery } from "../../services/NurseriesServices"
-import { PostShoppingCart } from "../../services/ShoppingCartServices"
+import { getCartByCustomerId, PostShoppingCart } from "../../services/ShoppingCartServices"
 
-export const RetailerDetails = ({currentUser}) => {
+export const RetailerDetails = ({ currentUser, setCartNum }) => {
     const { retailerId } = useParams()
     const [nurseryDistributors, setNurseryDistributors] = useState([])
     const [nurseryFlowers, setNurseryFlowers] = useState([])
     const [retailer, setRetailer] = useState({})
+    const [cartItems, setCartItems] = useState({})
 
     useEffect(() => {
         getAllDistributorNurseries(retailer.distributorId).then(data => {
-            setNurseryDistributors(data) 
+            setNurseryDistributors(data)
         })
     }, [retailer])
 
     useEffect(() => {
         if (nurseryDistributors.length > 0) {
             Promise.all(
-                nurseryDistributors.map(flower => getFlowerNursery(flower.nurseryId) )).then(results => {
-                setNurseryFlowers(results.flat()) 
-            })
+                nurseryDistributors.map(flower => getFlowerNursery(flower.nurseryId))).then(results => {
+                    setNurseryFlowers(results.flat())
+                })
         }
     }, [nurseryDistributors])
 
     useEffect(() => {
         getretailerDetails(retailerId).then(data => {
             const currentRetailer = data[0]
-            setRetailer(currentRetailer) 
+            setRetailer(currentRetailer)
         })
     }, [retailerId])
 
-    const ShoppingCart = (flowerIds, flowerName) => {
-        const cartItems = {
-            customerId: currentUser.id,
-            flowerId: parseInt(flowerIds),
-            retailerId: parseInt(retailerId)
+    useEffect(() => {
+        PostShoppingCart(cartItems).then(
+            getCartByCustomerId(currentUser.id).then((res) => {
+                setCartNum(res.length)
+            })
+        )
+    }, [cartItems])
+
+    useEffect(() => {
+        if (currentUser.id > 0) {
+            getCartByCustomerId(currentUser.id).then((res) => {
+                setCartNum(res.length)
+            })
         }
-
-        PostShoppingCart(cartItems)
-
-        window.location.reload()
-    }
+    }, [currentUser])
 
     return (
         <div className="detail-container">
@@ -59,25 +64,32 @@ export const RetailerDetails = ({currentUser}) => {
                     </section>
                     <section className="retail-details-nursery">
                         <h2>Nurseries</h2>
-                        {nurseryDistributors.map(data => {return <p>{data.nursery.name}</p>})}
+                        {nurseryDistributors.map(data => { return <p>{data.nursery.name}</p> })}
                     </section>
                 </div>
             </div>
-                
-                <div className="detail-flower-container">
+
+            <div className="detail-flower-container">
                 <section className="retail-detail-flower-container">
-                    {nurseryFlowers.map(flower => { 
+                    {nurseryFlowers.map(flower => {
                         return (
                             <div className="flower-container">
                                 <p className="flower-item">{flower.flower.color}</p>
                                 <p className="flower-item">{flower.flower.species}</p>
                                 <p className="flower-item">${flower.price}</p>
                                 <button onClick={(event) => {
-                                    ShoppingCart(event.target.value, event.target.id)
-                                }} value={flower.flowerId} id={`${flower.flower.species}`} >Purchase</button>                            
-                            </div>)})}
+                                    setCartItems(
+                                        {
+                                            customerId: currentUser.id,
+                                            flowerId: parseInt(event.target.value),
+                                            retailerId: parseInt(retailerId)
+                                        }
+                                    )
+                                }} value={flower.flowerId} id={`${flower.flower.species}`} >Purchase</button>
+                            </div>)
+                    })}
                 </section>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
