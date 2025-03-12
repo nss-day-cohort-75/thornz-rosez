@@ -8,6 +8,7 @@ import { RetailersList } from "../components/retailers/RetailersList"
 import { RetailerDetails } from "../components/retailers/RetailersDetails"
 import { ShoppingCart } from "../components/shoppingCart/ShoppingCart"
 import { DistributorsDetails } from "../components/distributors/DistributorsDetails.jsx"
+import { NurseriesDetails } from "../components/nurseries/NurseriesDetails.jsx"
 
 
 
@@ -28,7 +29,7 @@ export const ApplicationViews = () => {
                     <Outlet />
                 </>}>
                     <Route path="nursery" element={<NurseriesList/>} />
-                    {/* <Route path="nursery:Id" element={<NurseriesDetails/>} /> */}
+                    <Route path="nursery/:nurseryId" element={<NurseriesDetails/>} />
                     <Route path="distributor" element={<DistributorsList/>} />
                     <Route path="distributor/:distributorId" element={<DistributorsDetails/>} />
                     <Route path="retailer" element={<RetailersList/>} />
