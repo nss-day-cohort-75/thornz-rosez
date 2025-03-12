@@ -6,6 +6,8 @@ import { NurseriesList } from "../components/nurseries/NurseriesList"
 import { DistributorsList } from "../components/distributors/DistributorsList"
 import { RetailersList } from "../components/retailers/RetailersList"
 import { RetailerDetails } from "../components/retailers/RetailersDetails"
+import { DistributorsDetails } from "../components/distributors/DistributorsDetails.jsx"
+
 
 
 export const ApplicationViews = () => {
@@ -27,7 +29,7 @@ export const ApplicationViews = () => {
                     <Route path="nursery" element={<NurseriesList/>} />
                     {/* <Route path="nursery:Id" element={<NurseriesDetails/>} /> */}
                     <Route path="distributor" element={<DistributorsList/>} />
-                    {/* <Route path="distributor:Id" element={<DistributorsDetails/>} /> */}
+                    <Route path="distributor/:distributorId" element={<DistributorsDetails/>} />
                     <Route path="retailer" element={<RetailersList/>} />
                     <Route path="/retailer/:retailerId" element={<RetailerDetails currentUser={currentUser}/>} />
                     {/* <Route path="cart" element={<ShoppingCart />} /> */}
