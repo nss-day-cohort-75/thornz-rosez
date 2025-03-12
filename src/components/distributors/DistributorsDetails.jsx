@@ -53,7 +53,7 @@ useEffect(() => {
                 </section>
             </div>
             <div className="distributor-details-retail">
-            <h1>Retailers :</h1>
+            <h2>Retailers :</h2>
             </div>
         <div className="distributor-details-retail">{distributor?.retailers?.map(retailer=>{
             return retailer.name
