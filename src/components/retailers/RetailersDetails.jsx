@@ -36,13 +36,13 @@ export const RetailerDetails = ({currentUser}) => {
     const ShoppingCart = (flowerIds, flowerName) => {
         const cartItems = {
             customerId: currentUser.id,
-            flowerId: flowerIds,
-            retailerId: retailerId
+            flowerId: parseInt(flowerIds),
+            retailerId: parseInt(retailerId)
         }
 
         PostShoppingCart(cartItems)
-        .then(() => alert(`Purchased 1 ${flowerName}`))
-        .catch(err => console.error("Failed to add to cart:", err));
+
+        window.location.reload()
     }
 
     return (
